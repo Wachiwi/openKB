@@ -876,7 +876,7 @@ router.post('/user_insert', common.restrict, (req, res) => {
     let doc = {
         users_name: req.body.users_name,
         user_email: req.body.user_email,
-        user_password: bcrypt.hashSync(req.body.user_password),
+        user_password: bcrypt.hashSync(req.body.user_password, 10),
         is_admin: is_admin
     };
 
