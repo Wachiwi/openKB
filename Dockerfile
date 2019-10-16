@@ -1,8 +1,9 @@
-FROM alpine:3.5
+FROM node:lts-alpine
 
-RUN apk add --update nodejs
+EXPOSE 4444
 
 WORKDIR /var/openKB
+VOLUME /var/openKB/data
 
 COPY locales/ /var/openKB/locales/
 COPY public/ /var/openKB/public/
@@ -14,7 +15,4 @@ COPY package.json /var/openKB/
 
 RUN npm install
 
-VOLUME /var/openKB/data
-
-EXPOSE 4444
 ENTRYPOINT ["npm", "start"]
